@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="keep cool fly high">
 <meta property="og:description" content="整体使用感受使用Laravel  Eloquent ORM（下文简称ORM） 体验一句话：感觉很爽，发现思维是如此的美妙。所谓关联关系。官方说明是：“数据表经常要与其它表做关联，比如一篇博客文章可能有很多评论，或者一个订单会被关联到下单用户，Eloquent 使得组织和处理这些关联关系变得简单，并且支持多种不同类型的关联关系”//下面总结的一段话，不知道恰不恰当（留着以后验证）我是这样理解的：对单">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-28T13:43:47.957Z">
+<meta property="og:updated_time" content="2018-03-01T13:44:57.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laravel  Eloquent ORM —— 关联关系使用总结">
 <meta name="twitter:description" content="整体使用感受使用Laravel  Eloquent ORM（下文简称ORM） 体验一句话：感觉很爽，发现思维是如此的美妙。所谓关联关系。官方说明是：“数据表经常要与其它表做关联，比如一篇博客文章可能有很多评论，或者一个订单会被关联到下单用户，Eloquent 使得组织和处理这些关联关系变得简单，并且支持多种不同类型的关联关系”//下面总结的一段话，不知道恰不恰当（留着以后验证）我是这样理解的：对单">
@@ -384,8 +384,9 @@
 
       
         <h2 id="整体使用感受"><a href="#整体使用感受" class="headerlink" title="整体使用感受"></a>整体使用感受</h2><p>使用Laravel  Eloquent ORM（下文简称ORM） 体验一句话：感觉很爽，发现思维是如此的美妙。<br>所谓关联关系。官方说明是：“数据表经常要与其它表做关联，比如一篇博客文章可能有很多评论，或者一个订单会被关联到下单用户，Eloquent 使得组织和处理这些关联关系变得简单，并且支持多种不同类型的关联关系”<br>//下面总结的一段话，不知道恰不恰当（留着以后验证）<br>我是这样理解的：对单个表的操作诸如增、改、读、查（CURD），是基本的原子操作，也是最常见的。而ORM则是使多个表具有联动增、删、改、查的能力，虽然在底层来看依然是CURD（这貌似是必须的），但是在操作层，就是代码的逻辑层，完全可以抽象成一种新的数据交互能力。这种能力，可以极大提高开发的效率，但是对底层性能而言，可能稍有点损耗，简单测试过（对于以业务为导向的初创公司来说，提高硬件的能力，大抵可以解决该问题）。</p>
-<h2 id="关联关系"><a href="#关联关系" class="headerlink" title="关联关系"></a>关联关系</h2><p>本文借鉴laravel学院翻译的 <a href="http://laravelacademy.org/post/6996.html" target="_blank" rel="noopener">中文文档</a> 进行代码测试。</p>
-<h3 id="一对一关系"><a href="#一对一关系" class="headerlink" title="一对一关系"></a>一对一关系</h3><h3 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h3><h3 id="多对多（精华）"><a href="#多对多（精华）" class="headerlink" title="多对多（精华）"></a>多对多（精华）</h3><h3 id="关联关系的增、删、改"><a href="#关联关系的增、删、改" class="headerlink" title="关联关系的增、删、改"></a>关联关系的增、删、改</h3>
+<h2 id="关联关系"><a href="#关联关系" class="headerlink" title="关联关系"></a>关联关系</h2><p>本文借鉴laravel学院翻译的 <a href="http://laravelacademy.org/post/6996.html" target="_blank" rel="noopener">中文文档</a> 进行代码测试。<br>关联关系的model层配置等等的可借鉴文档，下文只是简单总结和补充</p>
+<h3 id="一对一关系"><a href="#一对一关系" class="headerlink" title="一对一关系"></a>一对一关系</h3><p>1.一对一关系简单理解，就是我们常用的主表的附属表，平时查询某条消息的附属表信息</p>
+<h3 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h3><h3 id="多对多（精华）"><a href="#多对多（精华）" class="headerlink" title="多对多（精华）"></a>多对多（精华）</h3><h3 id="关联关系的增、删、改"><a href="#关联关系的增、删、改" class="headerlink" title="关联关系的增、删、改"></a>关联关系的增、删、改</h3>
       
     </div>
     
@@ -456,6 +457,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/09/lnmpinstall/" rel="prev" title="Centos7.2+Php7.1 + Nginx1，9+Mysql5.6 —— 编译安装">
+                Centos7.2+Php7.1 + Nginx1，9+Mysql5.6 —— 编译安装 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -541,7 +546,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -552,7 +557,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -563,7 +568,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
