@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="lnmp," />
+  <meta name="keywords" content="负载均衡," />
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="继续上文在同一服务器增加多个版本php12345678910111213141516171819202122232425262728293031323334353637383940d /root/lnmpwget http://cn2.php.net/distributions/php-5.6.24.tar.gztar xzvf php-5.6.24.tar.gzcd php-7.0.6#./co">
-<meta name="keywords" content="lnmp">
+<meta name="description" content="Nginx负载均衡的理解Nginx是一个轻量级的、高性能的WebServer，他主要可以干下面两件事： 作为http服务器http服务器，结合php-fpm进程，对发来的请求进行处理，nginx本身并不会解析php，只是作为一个服务器，接受客户端发来的请求，如果是php请求，则交给php进程处理，并将php处理完成之后的结果发送给客户端。 运行原理可以看下面这段解释：Nginx不支持对外部程序的直">
+<meta name="keywords" content="负载均衡">
 <meta property="og:type" content="article">
-<meta property="og:title" content="php5.6安装">
-<meta property="og:url" content="http://blog.keepcoolflyhigh.com/2018/03/09/php5.6/index.html">
+<meta property="og:title" content="Nginx+php负载均衡配置原理整理">
+<meta property="og:url" content="http://blog.keepcoolflyhigh.com/2018/04/24/nginx+php负载均衡配置原理整理/index.html">
 <meta property="og:site_name" content="keep cool fly high">
-<meta property="og:description" content="继续上文在同一服务器增加多个版本php12345678910111213141516171819202122232425262728293031323334353637383940d /root/lnmpwget http://cn2.php.net/distributions/php-5.6.24.tar.gztar xzvf php-5.6.24.tar.gzcd php-7.0.6#./co">
+<meta property="og:description" content="Nginx负载均衡的理解Nginx是一个轻量级的、高性能的WebServer，他主要可以干下面两件事： 作为http服务器http服务器，结合php-fpm进程，对发来的请求进行处理，nginx本身并不会解析php，只是作为一个服务器，接受客户端发来的请求，如果是php请求，则交给php进程处理，并将php处理完成之后的结果发送给客户端。 运行原理可以看下面这段解释：Nginx不支持对外部程序的直">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-12T08:59:12.187Z">
+<meta property="og:image" content="http://blog.keepcoolflyhigh.com/2018/04/24/nginx+php负载均衡配置原理整理/_image/2-15032R23415629.jpg">
+<meta property="og:image" content="http://blog.keepcoolflyhigh.com/2018/04/24/nginx+php负载均衡配置原理整理/_image/2018-04-24-12-48-04.jpg">
+<meta property="og:updated_time" content="2018-04-25T07:49:08.005Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="php5.6安装">
-<meta name="twitter:description" content="继续上文在同一服务器增加多个版本php12345678910111213141516171819202122232425262728293031323334353637383940d /root/lnmpwget http://cn2.php.net/distributions/php-5.6.24.tar.gztar xzvf php-5.6.24.tar.gzcd php-7.0.6#./co">
+<meta name="twitter:title" content="Nginx+php负载均衡配置原理整理">
+<meta name="twitter:description" content="Nginx负载均衡的理解Nginx是一个轻量级的、高性能的WebServer，他主要可以干下面两件事： 作为http服务器http服务器，结合php-fpm进程，对发来的请求进行处理，nginx本身并不会解析php，只是作为一个服务器，接受客户端发来的请求，如果是php请求，则交给php进程处理，并将php处理完成之后的结果发送给客户端。 运行原理可以看下面这段解释：Nginx不支持对外部程序的直">
+<meta name="twitter:image" content="http://blog.keepcoolflyhigh.com/2018/04/24/nginx+php负载均衡配置原理整理/_image/2-15032R23415629.jpg">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.keepcoolflyhigh.com/2018/03/09/php5.6/"/>
+  <link rel="canonical" href="http://blog.keepcoolflyhigh.com/2018/04/24/nginx+php负载均衡配置原理整理/"/>
 
 
 
 
 
-  <title>php5.6安装 | keep cool fly high</title>
+  <title>Nginx+php负载均衡配置原理整理 | keep cool fly high</title>
   
 
 
@@ -273,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.keepcoolflyhigh.com/2018/03/09/php5.6/">
+    <link itemprop="mainEntityOfPage" href="http://blog.keepcoolflyhigh.com/2018/04/24/nginx+php负载均衡配置原理整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dingzhilei">
@@ -290,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">php5.6安装</h1>
+          <h1 class="post-title" itemprop="name headline">Nginx+php负载均衡配置原理整理</h1>
         
 
         <div class="post-meta">
@@ -302,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T13:57:03+08:00">
-                2018-03-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-24T12:21:03+08:00">
+                2018-04-24
               </time>
             
 
@@ -325,8 +328,30 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/php5-6/" itemprop="url" rel="index">
-                    <span itemprop="name">php5.6</span>
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/php/" itemprop="url" rel="index">
+                    <span itemprop="name">php</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/php/负载均衡/" itemprop="url" rel="index">
+                    <span itemprop="name">负载均衡</span>
                   </a>
                 </span>
 
@@ -343,8 +368,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/09/php5.6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/09/php5.6/" itemprop="commentCount"></span>
+                <a href="/2018/04/24/nginx+php负载均衡配置原理整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/24/nginx+php负载均衡配置原理整理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -352,7 +377,7 @@
 
           
           
-             <span id="/2018/03/09/php5.6/" class="leancloud_visitors" data-flag-title="php5.6安装">
+             <span id="/2018/04/24/nginx+php负载均衡配置原理整理/" class="leancloud_visitors" data-flag-title="Nginx+php负载均衡配置原理整理">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,7 +408,16 @@
       
 
       
-        <h3 id="继续上文在同一服务器增加多个版本php"><a href="#继续上文在同一服务器增加多个版本php" class="headerlink" title="继续上文在同一服务器增加多个版本php"></a>继续上文在同一服务器增加多个版本php</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">d /root/lnmp</span><br><span class="line">wget http://cn2.php.net/distributions/php-5.6.24.tar.gz</span><br><span class="line">tar xzvf php-5.6.24.tar.gz</span><br><span class="line">cd php-7.0.6</span><br><span class="line"></span><br><span class="line">#./configure --help</span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/local/lnmp/php5 --with-config-file-path=/usr/local/lnmp/php5/etc --with-mysqli=/usr/local/lnmp/mysql5/bin/mysql_config --with-iconv=/usr/local/lnmp/libs/ --with-freetype-dir=/usr/local/lnmp/libs --with-jpeg-dir=/usr/local/lnmp/libs --with-png-dir=/usr/local/lnmp/libs --with-zlib --with-libxml-dir=/usr --enable-xml --disable-rpath --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --enable-mbregex --enable-fpm --enable-mbstring --with-mcrypt=/usr/local/lnmp/libs --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-zip --with-bz2 --enable-soap --enable-opcache --with-pdo-mysql --enable-maintainer-zts --enable-pcntl --enable-shmop --enable-sysvmsg --enable-sysvsem --enable-sysvshm --without-pear --with-gettext  --enable-fpm --enable-opcache=no</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line">cp php.ini-development /usr/local/lnmp/php5/etc/php.ini</span><br><span class="line">cp ./sapi/fpm/php-fpm.conf /usr/local/lnmp/php5/etc/php-fpm.conf</span><br><span class="line"></span><br><span class="line">#下面是为了php-fpm随系统自启动。</span><br><span class="line">cp ./sapi/fpm/init.d.php-fpm /etc/init.d/php5-fpm</span><br><span class="line"></span><br><span class="line">#更改php-fpm启动用户</span><br><span class="line">vi /usr/local/lnmp/php5/etc/php-fpm.conf</span><br><span class="line">#把下面两行</span><br><span class="line">user = nobody</span><br><span class="line">group = nobody</span><br><span class="line">#改为：</span><br><span class="line">user = www</span><br><span class="line">group = www</span><br><span class="line"></span><br><span class="line">#修改php-fpm.conf的侦听端口为9001，因为主版本5.5.28是侦听9000。</span><br><span class="line">listen = 127.0.0.1:9001 </span><br><span class="line">或者使用</span><br><span class="line">;listen = 127.0.0.1:9000</span><br><span class="line">listen = /var/run/php-fpm/php5-fpm.sock</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#启动php</span><br><span class="line">/usr/local/lnmp/php5/sbin/php-fpm </span><br><span class="line"></span><br><span class="line">#查看进程</span><br><span class="line">ps aux|grep php-fpm</span><br></pre></td></tr></table></figure>
+        <h2 id="Nginx负载均衡的理解"><a href="#Nginx负载均衡的理解" class="headerlink" title="Nginx负载均衡的理解"></a>Nginx负载均衡的理解</h2><p>Nginx是一个轻量级的、高性能的WebServer，他主要可以干下面两件事：</p>
+<h4 id="作为http服务器"><a href="#作为http服务器" class="headerlink" title="作为http服务器"></a>作为http服务器</h4><p>http服务器，结合php-fpm进程，对发来的请求进行处理，nginx本身并不会解析php，只是作为一个服务器，接受客户端发来的请求，如果是php请求，则交给php进程处理，并将php处理完成之后的结果发送给客户端。</p>
+<h5 id="运行原理可以看下面这段解释："><a href="#运行原理可以看下面这段解释：" class="headerlink" title="运行原理可以看下面这段解释："></a>运行原理可以看下面这段解释：</h5><p>Nginx不支持对外部程序的直接调用或者解析，所有的外部程序（包括PHP）必须通过FastCGI接口来调用。FastCGI接口在Linux下是socket（这个socket可以是文件socket，也可以是ip socket）。为了调用CGI程序，还需要一个FastCGI的wrapper（wrapper可以理解为用于启动另一个程序的程序），这个wrapper绑定在某个固定socket上，如端口或者文件socket。当Nginx将CGI请求发送给这个socket的时候，通过FastCGI接口，wrapper接收到请求，然后派生出一个新的线程，这个线程调用解释器或者外部程序处理脚本并读取返回数据；接着，wrapper再将返回的数据通过FastCGI接口，沿着固定的socket传递给Nginx；最后，Nginx将返回的数据发送给客户端。这就是Nginx+FastCGI的整个运作过程，如图下图所示。</p>
+<p><img src="./_image/2-15032R23415629.jpg" alt=""></p>
+<h4 id="作为反向代理服务器实现负载均衡"><a href="#作为反向代理服务器实现负载均衡" class="headerlink" title="作为反向代理服务器实现负载均衡"></a>作为反向代理服务器实现负载均衡</h4><p>这个其实其实很简单，说起来就是自己定义一组server，对请求进行匹配，并将请求转给server中的任意一个处理，来减轻每个server的压力，先看看网上对反向向代理的定义：<br>反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。</p>
+<p><img src="./_image/2018-04-24-12-48-04.jpg" alt=""><br>反向代理是和正向代理（或者叫代理） 相反的，代理大家定听过吧，为了更方便的访问B资源，通过A资源间接的访问B资源，特点就是用户知道自己最终要访问的网站是什么，但是反向代理用户是不知道代理服务器后边做了什么处理的，反向代理中服务真正的处理服务器放在内网，对外网而言只可以访问反向代理服务器，这也大大提高了安全性。</p>
+<h2 id="Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置"><a href="#Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置" class="headerlink" title="Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置"></a>Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置</h2><p>nginx 的 upstream目前支持 4 种方式的分配<br>1)、轮询（默认）<br>　　每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。<br>2)、weight<br>　　指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。<br>2)、ip_hash<br>　　每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。<br>3)、fair（第三方）<br>　　按后端服务器的响应时间来分配请求，响应时间短的优先分配。<br>4)、url_hash（第三方）</p>
+<h2 id="weight方式配置"><a href="#weight方式配置" class="headerlink" title="weight方式配置"></a>weight方式配置</h2><p>见下文</p>
+<p>整理借鉴：<br><a href="https://www.cnblogs.com/mfc-itblog/p/5718643.html" target="_blank" rel="noopener">https://www.cnblogs.com/mfc-itblog/p/5718643.html</a><br><a href="https://www.colabug.com/165736.html" target="_blank" rel="noopener">https://www.colabug.com/165736.html</a></p>
+
       
     </div>
     
@@ -432,7 +466,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/lnmp/" rel="tag"># lnmp</a>
+            <a href="/tags/负载均衡/" rel="tag"># 负载均衡</a>
           
         </div>
       
@@ -445,8 +479,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/28/laravel-OMR/" rel="next" title="Laravel  Eloquent ORM —— 关联关系使用总结">
-                <i class="fa fa-chevron-left"></i> Laravel  Eloquent ORM —— 关联关系使用总结
+              <a href="/2018/04/18/zg主从配置/" rel="next" title="Mysql 主从配置-正式环境操作">
+                <i class="fa fa-chevron-left"></i> Mysql 主从配置-正式环境操作
               </a>
             
           </div>
@@ -455,8 +489,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/09/lnmpinstall/" rel="prev" title="Centos7.2+Php7.1 + Nginx1.9+Mysql5.6 —— 编译安装">
-                Centos7.2+Php7.1 + Nginx1.9+Mysql5.6 —— 编译安装 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/24/Nginx+php+centos负载均衡配置/" rel="prev" title="Nginx+php+centos负载均衡配置">
+                Nginx+php+centos负载均衡配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -598,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#继续上文在同一服务器增加多个版本php"><span class="nav-number">1.</span> <span class="nav-text">继续上文在同一服务器增加多个版本php</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx负载均衡的理解"><span class="nav-number">1.</span> <span class="nav-text">Nginx负载均衡的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作为http服务器"><span class="nav-number">1.0.1.</span> <span class="nav-text">作为http服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#运行原理可以看下面这段解释："><span class="nav-number">1.0.1.1.</span> <span class="nav-text">运行原理可以看下面这段解释：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作为反向代理服务器实现负载均衡"><span class="nav-number">1.0.2.</span> <span class="nav-text">作为反向代理服务器实现负载均衡</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置"><span class="nav-number">2.</span> <span class="nav-text">Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weight方式配置"><span class="nav-number">3.</span> <span class="nav-text">weight方式配置</span></a></li></ol></div>
             
 
           </div>
