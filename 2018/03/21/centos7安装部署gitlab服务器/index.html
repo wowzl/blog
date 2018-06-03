@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="gitlab," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="非淡泊无以明志，非宁静无以致远">
-<meta property="og:type" content="website">
-<meta property="og:title" content="keep cool fly high">
-<meta property="og:url" content="http://blog.keepcoolflyhigh.com/archives/page/2/index.html">
+<meta name="description" content="环境准备操作系统：centos74核8G 软件准备yum wget  更换阿里yum（看个人意愿，阿里下载快一点了）备份默认yum1mv /etc/yum.repos.d /etc/yum.repos.d.backup 设置新的yum目录1mkdir /etc/yum.repos.d 下载阿里yum配置到该目录中1wget -O /etc/yum.repos.d/CentOS-Base.repo">
+<meta name="keywords" content="gitlab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos7安装部署gitlab服务器">
+<meta property="og:url" content="http://blog.keepcoolflyhigh.com/2018/03/21/centos7安装部署gitlab服务器/index.html">
 <meta property="og:site_name" content="keep cool fly high">
-<meta property="og:description" content="非淡泊无以明志，非宁静无以致远">
+<meta property="og:description" content="环境准备操作系统：centos74核8G 软件准备yum wget  更换阿里yum（看个人意愿，阿里下载快一点了）备份默认yum1mv /etc/yum.repos.d /etc/yum.repos.d.backup 设置新的yum目录1mkdir /etc/yum.repos.d 下载阿里yum配置到该目录中1wget -O /etc/yum.repos.d/CentOS-Base.repo">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-29T12:51:50.421Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="keep cool fly high">
-<meta name="twitter:description" content="非淡泊无以明志，非宁静无以致远">
+<meta name="twitter:title" content="centos7安装部署gitlab服务器">
+<meta name="twitter:description" content="环境准备操作系统：centos74核8G 软件准备yum wget  更换阿里yum（看个人意愿，阿里下载快一点了）备份默认yum1mv /etc/yum.repos.d /etc/yum.repos.d.backup 设置新的yum目录1mkdir /etc/yum.repos.d 下载阿里yum配置到该目录中1wget -O /etc/yum.repos.d/CentOS-Base.repo">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.keepcoolflyhigh.com/archives/page/2/"/>
+  <link rel="canonical" href="http://blog.keepcoolflyhigh.com/2018/03/21/centos7安装部署gitlab服务器/"/>
 
 
 
 
 
-  <title>归档 | keep cool fly high</title>
+  <title>centos7安装部署gitlab服务器 | keep cool fly high</title>
   
 
 
@@ -153,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -257,226 +259,243 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.keepcoolflyhigh.com/2018/03/21/centos7安装部署gitlab服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dingzhilei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="keep cool fly high">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">centos7安装部署gitlab服务器</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T18:30:03+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 15 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/gitlab/" itemprop="url" rel="index">
+                    <span itemprop="name">gitlab</span>
+                  </a>
+                </span>
 
-      
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/gitlab/centos7/" itemprop="url" rel="index">
+                    <span itemprop="name">centos7</span>
+                  </a>
+                </span>
 
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/21/centos7安装部署gitlab服务器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/21/centos7安装部署gitlab服务器/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
+             <span id="/2018/03/21/centos7安装部署gitlab服务器/" class="leancloud_visitors" data-flag-title="centos7安装部署gitlab服务器">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/28/Laravel  Eloquent ORM —— 关联关系使用总结/" itemprop="url">
-              
-                <span itemprop="name">Laravel  Eloquent ORM —— 关联关系使用总结</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-28T13:57:03+08:00"
-              content="2018-02-28" >
-          02-28
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/30/mysql-zhucong/" itemprop="url">
-              
-                <span itemprop="name">Mysql 主从配置</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-30T13:57:03+08:00"
-              content="2018-01-30" >
-          01-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/30/Laravel 上手小感/" itemprop="url">
-              
-                <span itemprop="name">Laravel 上手小感</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-30T13:57:03+08:00"
-              content="2018-01-30" >
-          01-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/30/笔记记录/" itemprop="url">
-              
-                <span itemprop="name">linux简单操作得笔记记录</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-30T13:57:03+08:00"
-              content="2018-01-30" >
-          01-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>操作系统：centos7<br>4核8G</p>
+<h1 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备"></a>软件准备</h1><p>yum wget </p>
+<h1 id="更换阿里yum（看个人意愿，阿里下载快一点了）"><a href="#更换阿里yum（看个人意愿，阿里下载快一点了）" class="headerlink" title="更换阿里yum（看个人意愿，阿里下载快一点了）"></a>更换阿里yum（看个人意愿，阿里下载快一点了）</h1><h4 id="备份默认yum"><a href="#备份默认yum" class="headerlink" title="备份默认yum"></a>备份默认yum</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/yum.repos.d /etc/yum.repos.d.backup</span><br></pre></td></tr></table></figure>
+<h4 id="设置新的yum目录"><a href="#设置新的yum目录" class="headerlink" title="设置新的yum目录"></a>设置新的yum目录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/yum.repos.d</span><br></pre></td></tr></table></figure>
+<h4 id="下载阿里yum配置到该目录中"><a href="#下载阿里yum配置到该目录中" class="headerlink" title="下载阿里yum配置到该目录中"></a>下载阿里yum配置到该目录中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br></pre></td></tr></table></figure>
+<h4 id="重建缓存"><a href="#重建缓存" class="headerlink" title="重建缓存"></a>重建缓存</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+<h1 id="获取gitlab汉化包"><a href="#获取gitlab汉化包" class="headerlink" title="获取gitlab汉化包"></a>获取gitlab汉化包</h1><h4 id="克隆获取汉化版本库"><a href="#克隆获取汉化版本库" class="headerlink" title="克隆获取汉化版本库"></a>克隆获取汉化版本库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitlab.com/xhang/gitlab.git</span><br></pre></td></tr></table></figure>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/29/keepcool/" itemprop="url">
-              
-                <span itemprop="name">keep cool</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-29T14:01:12+08:00"
-              content="2018-01-29" >
-          01-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="dingzhilei wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫关注微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/wechatpay.jpg" alt="dingzhilei 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gitlab/" rel="tag"># gitlab</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/14/python2.7 安装pip linux/" rel="next" title="python2.7 安装pip linux">
+                <i class="fa fa-chevron-left"></i> python2.7 安装pip linux
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/24/nginx+php负载均衡配置原理整理/" rel="prev" title="Nginx+php负载均衡配置原理整理">
+                Nginx+php负载均衡配置原理整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -484,6 +503,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -504,8 +532,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -569,6 +606,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境准备"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件准备"><span class="nav-number">2.</span> <span class="nav-text">软件准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更换阿里yum（看个人意愿，阿里下载快一点了）"><span class="nav-number">3.</span> <span class="nav-text">更换阿里yum（看个人意愿，阿里下载快一点了）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#备份默认yum"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">备份默认yum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置新的yum目录"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">设置新的yum目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下载阿里yum配置到该目录中"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">下载阿里yum配置到该目录中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重建缓存"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">重建缓存</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取gitlab汉化包"><span class="nav-number">4.</span> <span class="nav-text">获取gitlab汉化包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#克隆获取汉化版本库"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">克隆获取汉化版本库</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -710,6 +763,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
