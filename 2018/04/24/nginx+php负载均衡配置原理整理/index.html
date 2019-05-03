@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="负载均衡," />
+  <meta name="keywords" content="负载均衡,">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.keepcoolflyhigh.com/2018/04/24/nginx+php负载均衡配置原理整理/"/>
+  <link rel="canonical" href="http://blog.keepcoolflyhigh.com/2018/04/24/nginx+php负载均衡配置原理整理/">
 
 
 
@@ -167,7 +167,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">keep cool fly high</span>
         <span class="logo-line-after"><i></i></span>
@@ -197,7 +197,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -207,7 +207,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -217,7 +217,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -227,7 +227,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -237,7 +237,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -280,7 +280,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="dingzhilei">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -316,7 +316,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -411,9 +411,9 @@
         <h2 id="Nginx负载均衡的理解"><a href="#Nginx负载均衡的理解" class="headerlink" title="Nginx负载均衡的理解"></a>Nginx负载均衡的理解</h2><p>Nginx是一个轻量级的、高性能的WebServer，他主要可以干下面两件事：</p>
 <h4 id="作为http服务器"><a href="#作为http服务器" class="headerlink" title="作为http服务器"></a>作为http服务器</h4><p>http服务器，结合php-fpm进程，对发来的请求进行处理，nginx本身并不会解析php，只是作为一个服务器，接受客户端发来的请求，如果是php请求，则交给php进程处理，并将php处理完成之后的结果发送给客户端。</p>
 <h5 id="运行原理可以看下面这段解释："><a href="#运行原理可以看下面这段解释：" class="headerlink" title="运行原理可以看下面这段解释："></a>运行原理可以看下面这段解释：</h5><p>Nginx不支持对外部程序的直接调用或者解析，所有的外部程序（包括PHP）必须通过FastCGI接口来调用。FastCGI接口在Linux下是socket（这个socket可以是文件socket，也可以是ip socket）。为了调用CGI程序，还需要一个FastCGI的wrapper（wrapper可以理解为用于启动另一个程序的程序），这个wrapper绑定在某个固定socket上，如端口或者文件socket。当Nginx将CGI请求发送给这个socket的时候，通过FastCGI接口，wrapper接收到请求，然后派生出一个新的线程，这个线程调用解释器或者外部程序处理脚本并读取返回数据；接着，wrapper再将返回的数据通过FastCGI接口，沿着固定的socket传递给Nginx；最后，Nginx将返回的数据发送给客户端。这就是Nginx+FastCGI的整个运作过程，如图下图所示。</p>
-<p><img src="./_image/2-15032R23415629.jpg" alt=""></p>
+<p><img src="./_image/2-15032R23415629.jpg" alt></p>
 <h4 id="作为反向代理服务器实现负载均衡"><a href="#作为反向代理服务器实现负载均衡" class="headerlink" title="作为反向代理服务器实现负载均衡"></a>作为反向代理服务器实现负载均衡</h4><p>这个其实其实很简单，说起来就是自己定义一组server，对请求进行匹配，并将请求转给server中的任意一个处理，来减轻每个server的压力，先看看网上对反向向代理的定义：<br>反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。</p>
-<p><img src="./_image/2018-04-24-12-48-04.jpg" alt=""><br>反向代理是和正向代理（或者叫代理） 相反的，代理大家定听过吧，为了更方便的访问B资源，通过A资源间接的访问B资源，特点就是用户知道自己最终要访问的网站是什么，但是反向代理用户是不知道代理服务器后边做了什么处理的，反向代理中服务真正的处理服务器放在内网，对外网而言只可以访问反向代理服务器，这也大大提高了安全性。</p>
+<p><img src="./_image/2018-04-24-12-48-04.jpg" alt><br>反向代理是和正向代理（或者叫代理） 相反的，代理大家定听过吧，为了更方便的访问B资源，通过A资源间接的访问B资源，特点就是用户知道自己最终要访问的网站是什么，但是反向代理用户是不知道代理服务器后边做了什么处理的，反向代理中服务真正的处理服务器放在内网，对外网而言只可以访问反向代理服务器，这也大大提高了安全性。</p>
 <h2 id="Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置"><a href="#Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置" class="headerlink" title="Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置"></a>Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置</h2><p>nginx 的 upstream目前支持 4 种方式的分配<br>1)、轮询（默认）<br>　　每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。<br>2)、weight<br>　　指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。<br>2)、ip_hash<br>　　每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。<br>3)、fair（第三方）<br>　　按后端服务器的响应时间来分配请求，响应时间短的优先分配。<br>4)、url_hash（第三方）</p>
 <h2 id="weight方式配置"><a href="#weight方式配置" class="headerlink" title="weight方式配置"></a>weight方式配置</h2><p>见下文</p>
 <p>整理借鉴：<br><a href="https://www.cnblogs.com/mfc-itblog/p/5718643.html" target="_blank" rel="noopener">https://www.cnblogs.com/mfc-itblog/p/5718643.html</a><br><a href="https://www.colabug.com/165736.html" target="_blank" rel="noopener">https://www.colabug.com/165736.html</a></p>
@@ -427,7 +427,7 @@
     
       <div>
         <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="dingzhilei wechat" style="width: 200px; max-width: 100%;"/>
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="dingzhilei wechat" style="width: 200px; max-width: 100%;">
     <div>扫一扫关注微信公众号</div>
 </div>
 
@@ -445,7 +445,7 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/uploads/wechatpay.jpg" alt="dingzhilei 微信支付"/>
+        <img id="wechat_qr" src="/uploads/wechatpay.jpg" alt="dingzhilei 微信支付">
         <p>微信支付</p>
       </div>
     
@@ -562,9 +562,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.png"
-                alt="dingzhilei" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="dingzhilei">
             
               <p class="site-author-name" itemprop="name">dingzhilei</p>
               <p class="site-description motion-element" itemprop="description">非淡泊无以明志，非宁静无以致远</p>
@@ -577,7 +575,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -588,7 +586,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -599,7 +597,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -632,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx负载均衡的理解"><span class="nav-number">1.</span> <span class="nav-text">Nginx负载均衡的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作为http服务器"><span class="nav-number">1.0.1.</span> <span class="nav-text">作为http服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#运行原理可以看下面这段解释："><span class="nav-number">1.0.1.1.</span> <span class="nav-text">运行原理可以看下面这段解释：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作为反向代理服务器实现负载均衡"><span class="nav-number">1.0.2.</span> <span class="nav-text">作为反向代理服务器实现负载均衡</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置"><span class="nav-number">2.</span> <span class="nav-text">Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weight方式配置"><span class="nav-number">3.</span> <span class="nav-text">weight方式配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx负载均衡的理解"><span class="nav-number">1.</span> <span class="nav-text">Nginx负载均衡的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作为http服务器"><span class="nav-number">1.0.1.</span> <span class="nav-text">作为http服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#运行原理可以看下面这段解释："><span class="nav-number">1.0.1.1.</span> <span class="nav-text">运行原理可以看下面这段解释：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作为反向代理服务器实现负载均衡"><span class="nav-number">1.0.2.</span> <span class="nav-text">作为反向代理服务器实现负载均衡</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置"><span class="nav-number">2.</span> <span class="nav-text">Nginx负载均衡是通过upstream模块来实现的，负载均衡有4种方案配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weight方式配置"><span class="nav-number">3.</span> <span class="nav-text">weight方式配置</span></a></li></div>
             
 
           </div>
@@ -652,7 +650,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
